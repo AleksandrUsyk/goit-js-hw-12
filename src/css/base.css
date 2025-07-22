@@ -99,5 +99,17 @@ body {
 }
 
 .is-hidden {
-  display: none;
+  display: none !important;
+}
+
+.load-more {
+  padding: 12px 24px;
+  font-size: 16px;
+  background-color: #4a7eff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 20px auto;
+  display: block;
 }
