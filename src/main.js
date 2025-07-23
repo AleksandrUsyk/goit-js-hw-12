@@ -4,6 +4,8 @@ import {
   clearGallery,
   showLoader,
   hideLoader,
+  showLoadMoreButton,
+  hideLoadMoreButton,
 } from './js/render-functions';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
@@ -32,7 +34,7 @@ form.addEventListener('submit', async e => {
   clearGallery();
   currentPage = 1;
   totalPages = 0;
-  hideLoadMore();
+  hideLoadMoreButton();
   await loadImages();
 });
 
@@ -61,9 +63,9 @@ async function loadImages() {
     totalPages = Math.ceil(data.totalHits / 15);
 
     if (currentPage < totalPages) {
-      showLoadMore();
+      showLoadMoreButton();
     } else {
-      hideLoadMore();
+      hideLoadMoreButton();
       iziToast.info({
         title: 'Info',
         message: "We're sorry, but you've reached the end of search results.",
@@ -90,12 +92,4 @@ async function loadImages() {
   } finally {
     hideLoader();
   }
-}
-
-function showLoadMore() {
-  loadMoreBtn.classList.remove('is-hidden');
-}
-
-function hideLoadMore() {
-  loadMoreBtn.classList.add('is-hidden');
 }
